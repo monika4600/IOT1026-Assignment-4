@@ -1,5 +1,5 @@
 ﻿// Change to 'using Assignment.InterfaceCommand' when you are ready to test your interface implementation
-using Assignment.AbstractCommand;
+using Assignment.InterfaceCommand;
 
 namespace Assignment;
 
@@ -45,12 +45,11 @@ public class Robot
     /// <throws> </throws>
     public void Run()
     {
-        // Is this throw a good design choice? Can you think of any alternatives?
-        if (!_commands.Any()) throw new InvalidOperationException("No commands have been loaded!");
-        foreach (var command in _commands)
+        for (var i = 0; i < _commandsLoaded; ++i)
         {
-            command.Run(this);
+            _commands[i].Run(this);
             Console.WriteLine(this);
+
         }
     }
 
